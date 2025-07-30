@@ -9,7 +9,6 @@ import AppDownload from "./components/AppDownlad/AppDownload";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import ThemeContextProvider from "./components/context/ThemeContext";
 import FoodDetail from "./components/FoodDetail/FoodDetail";
-import SearchBar from "./components/SearchBar/SearchBar";
 import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 import Wishlist from "./pages/wishlist/wishlist";
@@ -40,6 +39,7 @@ const App = () => {
 
         <div className="app">
           <Navbar setShowLogin={setShowLogin} />
+          <SearchBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
@@ -48,7 +48,6 @@ const App = () => {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/restaurants" element={<Restaurants />} />
           </Routes>
-
           <ScrollToTopButton /> {/* floating button */}
           <CartSummaryBar />
           <AppDownload />
