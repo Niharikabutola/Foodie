@@ -25,3 +25,19 @@
     gap: 30px;
     row-gap: 50px;
 }
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.no-results p {
+    font-size: 18px;
+    color: #6c757d;
+    margin: 0;
+    font-weight: 500;
+}

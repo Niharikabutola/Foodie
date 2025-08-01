@@ -17,7 +17,7 @@ import Restaurants from "./pages/Restaurants/Restaurants";
 import Chatbot from "./components/Chatbot/Chatbot";
 import FAQ from "./components/FAQ/FAQ";
 import { Toaster } from "react-hot-toast";
-import LoadingAnimation from './components/LoadingAnimation';
+import LoadingAnimation from "./components/LoadingAnimation";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -33,32 +33,30 @@ const App = () => {
   }
 
   return (
-   <ThemeContextProvider>
-  <>
-    <Toaster position="top-right" reverseOrder={false} />
-    {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
-    
-    <div className="app">
-      <Navbar setShowLogin={setShowLogin} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order" element={<PlaceOrder />} />
-        <Route path="/food/:id" element={<FoodDetail />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/restaurants" element={<Restaurants />} />
-      </Routes>
-       
-      <ScrollToTopButton />   {/* floating button */}
-      <CartSummaryBar />
-      <AppDownload />
-      <FAQ />
-      <Footer />
-      <Chatbot /> {/* AI Food Assistant */}
-    </div>
-  </>
-</ThemeContextProvider>
+    <ThemeContextProvider>
+      <>
+        <Toaster position="top-right" reverseOrder={false} />
+        {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
 
+        <div className="app">
+          <Navbar setShowLogin={setShowLogin} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/order" element={<PlaceOrder />} />
+            <Route path="/food/:id" element={<FoodDetail />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/restaurants" element={<Restaurants />} />
+          </Routes>
+          <ScrollToTopButton /> {/* floating button */}
+          <CartSummaryBar />
+          <AppDownload />
+          <FAQ />
+          <Footer />
+          <Chatbot /> {/* AI Food Assistant */}
+        </div>
+      </>
+    </ThemeContextProvider>
   );
 };
 
