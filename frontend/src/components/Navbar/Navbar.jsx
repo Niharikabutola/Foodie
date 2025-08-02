@@ -32,24 +32,34 @@ const Navbar = ({ setShowLogin }) => {
   };
 
   return (
-    <div className={`navbar ${theme === "dark" ? "navbar-dark" : ""}`}>
-      <Link to="/" className="navbar-logo">
-        <img src={assets.foodie_icon} alt="app icon" className="app-icon " />
-      </Link>
-
-      {/* Hamburger Icon */}
-      <div className="hamburger" onClick={toggleMenu}>
-        {mobileMenuOpen ? <X size={24} /> : <AlignJustify size={24} />}
+    <>
+      {/* Top Navbar: Logo + Action Buttons */}
+      <div className={`navbar ${theme === "dark" ? "navbar-dark" : ""}`}>
+        <Link to="/" className="navbar-logo">
+          <img src={assets.foodie_icon} alt="app icon" className="app-icon " />
+        </Link>
+        <div className="navbar-right">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <div className="navbar-cart">
+            <Link to="/cart" className="icon-button">
+              <ShoppingCart size={18} />
+              <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
+            </Link>
+          </div>
+          <button className="signin-button" onClick={() => setShowLogin(true)}>
+            <User size={16} />
+            <span>Sign In</span>
+          </button>
+        </div>
       </div>
 
-      {/* Desktop + Mobile Menu */}
-      <ul className={`navbar-menu ${mobileMenuOpen ? "open" : ""}`}>
+      {/* Bottom Navigation Bar: Navigation Items Only */}
+      <ul className="navbar-menu">
         <Link
           to="/"
-          onClick={() => {
-            setMenu("home");
-            setMobileMenuOpen(false);
-          }}
+          onClick={() => setMenu("home")}
           className={`nav-item ${menu === "home" ? "active" : ""}`}
         >
           <Home size={18} />
@@ -61,14 +71,11 @@ const Navbar = ({ setShowLogin }) => {
           className={`nav-item ${menu === "restaurants" ? "active" : ""}`}
         >
           <Utensils size={18} />
-          <span>Restaurants</span>
+          <span>Restaurant</span>
         </Link>
         <a
           href="#explore-menu"
-          onClick={() => {
-            setMenu("menu");
-            setMobileMenuOpen(false);
-          }}
+          onClick={() => setMenu("menu")}
           className={`nav-item ${menu === "menu" ? "active" : ""}`}
         >
           <Menu size={18} />
@@ -76,27 +83,23 @@ const Navbar = ({ setShowLogin }) => {
         </a>
         <a
           href="#appdownload"
-          onClick={() => {
-            setMenu("mobile-app");
-            setMobileMenuOpen(false);
-          }}
+          onClick={() => setMenu("mobile-app")}
           className={`nav-item ${menu === "mobile-app" ? "active" : ""}`}
         >
           <Smartphone size={18} />
           <span>Mobile App</span>
         </a>
-        <Link to="/wishlist"
-        onClick={() => setMenu("wishlist")}
-          className={`nav-item ${menu === "wishlist" ? "active" : ""}`}>
+        <Link
+          to="/wishlist"
+          onClick={() => setMenu("wishlist")}
+          className={`nav-item ${menu === "wishlist" ? "active" : ""}`}
+        >
           <Heart size={18} />
           <span>Wishlist</span>
         </Link>
         <a
           href="#footer"
-          onClick={() => {
-            setMenu("contact-us");
-            setMobileMenuOpen(false);
-          }}
+          onClick={() => setMenu("contact-us")}
           className={`nav-item ${menu === "contact-us" ? "active" : ""}`}
         >
           <Phone size={18} />
@@ -111,44 +114,7 @@ const Navbar = ({ setShowLogin }) => {
           <span>FAQ</span>
         </a>
       </ul>
-
-      {/* Mobile Actions - Always visible on mobile */}
-      <div className="mobile-actions">
-        <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme}>
-          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-        
-        <Link to="/cart" className="nav-item mobile-cart" onClick={() => setMobileMenuOpen(false)}>
-          <ShoppingCart size={20} />
-          <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
-        </Link>
-        
-        <button className="signin-button mobile-signin" onClick={() => {
-          setShowLogin(true);
-          setMobileMenuOpen(false);
-        }}>
-          <User size={18} />
-        </button>
-      </div>
-
-      <div className="navbar-right">
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-
-        <div className="navbar-cart">
-          <Link to="/cart" className="icon-button">
-            <ShoppingCart size={18} />
-            <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
-          </Link>
-        </div>
-
-        <button className="signin-button" onClick={() => setShowLogin(true)}>
-          <User size={16} />
-          <span>Sign In</span>
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
