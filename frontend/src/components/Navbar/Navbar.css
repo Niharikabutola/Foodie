@@ -19,14 +19,11 @@
 }
 /* as per theme*/
 :root {
-  --navbar-bg: rgba(255, 255, 255, 0.85); /* light frosted white */
+  --navbar-bg: #ffffff; /* light frosted white */
 }
 [data-theme="dark"] {
-  --navbar-bg: rgba(17, 21, 29, 0.85); /* dark frosted black */
+  --navbar-bg: #11151d; /* dark frosted black */
 }
-
-
-
 
 .navbar-logo {
   display: flex;
