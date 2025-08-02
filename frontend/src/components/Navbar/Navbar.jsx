@@ -20,12 +20,15 @@ import {
   Utensils,
   HelpCircle,
 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getTotalCartAmount } = useContext(StoreContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -45,7 +48,9 @@ const Navbar = ({ setShowLogin }) => {
           <div className="navbar-cart">
             <Link to="/cart" className="icon-button">
               <ShoppingCart size={18} />
-              <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
+              <div
+                className={getTotalCartAmount() === 0 ? "" : "cart-dot"}
+              ></div>
             </Link>
           </div>
           <button className="signin-button" onClick={() => setShowLogin(true)}>
@@ -81,6 +86,7 @@ const Navbar = ({ setShowLogin }) => {
           <Menu size={18} />
           <span>Menu</span>
         </a>
+
         <a
           href="#appdownload"
           onClick={() => setMenu("mobile-app")}
