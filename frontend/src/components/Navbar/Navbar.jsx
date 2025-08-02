@@ -50,6 +50,7 @@ const Navbar = ({ setShowLogin }) => {
       >
         <Home size={18} />
         <span>Home</span>
+
       </Link>
       <Link
         to="/restaurants"
@@ -62,7 +63,7 @@ const Navbar = ({ setShowLogin }) => {
       <a
         href="#explore-menu"
         className={`nav-item ${menu === "menu" ? "active" : ""}`}
-        onClick={(e) => handleNavMenuClick(e, "menu", "explore-menu")}
+        onClick={e => handleNavMenuClick(e, "menu", "explore-menu")}
       >
         <Menu size={18} />
         <span>Menu</span>
@@ -70,7 +71,7 @@ const Navbar = ({ setShowLogin }) => {
       <a
         href="#appdownload"
         className={`nav-item ${menu === "mobile-app" ? "active" : ""}`}
-        onClick={(e) => handleNavMenuClick(e, "mobile-app", "appdownload")}
+        onClick={e => handleNavMenuClick(e, "mobile-app", "appdownload")}
       >
         <Smartphone size={18} />
         <span>Mobile App</span>
@@ -86,7 +87,8 @@ const Navbar = ({ setShowLogin }) => {
       <a
         href="#footer"
         className={`nav-item ${menu === "contact-us" ? "active" : ""}`}
-        onClick={(e) => handleNavMenuClick(e, "contact-us", "footer")}
+        onClick={e => handleNavMenuClick(e, "contact-us", "footer")}
+
       >
         <Phone size={18} />
         <span>Contact</span>
@@ -94,7 +96,9 @@ const Navbar = ({ setShowLogin }) => {
       <a
         href="#faq"
         className={`nav-item ${menu === "faq" ? "active" : ""}`}
+
         onClick={(e) => handleNavMenuClick(e, "faq", "faq")}
+
       >
         <HelpCircle size={18} />
         <span>FAQ</span>
@@ -111,6 +115,7 @@ const Navbar = ({ setShowLogin }) => {
           <img src={assets.foodie_icon} alt="app icon" className="app-icon" />
         </Link>
         {/* Desktop menu (center, hidden on mobile) */}
+
         <nav className="navbar-menu navbar-menu-desktop">{navMenu}</nav>
         {/* Right action buttons */}
         <div className="navbar-right">
@@ -119,14 +124,15 @@ const Navbar = ({ setShowLogin }) => {
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
+
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <div className="navbar-cart">
             <Link to="/cart" className="icon-button" aria-label="Go to cart">
               <ShoppingCart size={18} />
-              <div
-                className={getTotalCartAmount() === 0 ? "" : "cart-dot"}
-              ></div>
+
+              {getTotalCartAmount() > 0 && <div className="cart-dot"></div>}
+
             </Link>
           </div>
           <button className="signin-button" onClick={() => setShowLogin(true)}>
@@ -136,66 +142,11 @@ const Navbar = ({ setShowLogin }) => {
         </div>
       </div>
 
-      {/* Bottom Navigation Bar: Navigation Items Only */}
-      <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
-          className={`nav-item ${menu === "home" ? "active" : ""}`}
-        >
-          <Home size={18} />
-          <span>Home</span>
-        </Link>
-        <Link
-          to="/restaurants"
-          onClick={() => setMenu("restaurants")}
-          className={`nav-item ${menu === "restaurants" ? "active" : ""}`}
-        >
-          <Utensils size={18} />
-          <span>Restaurant</span>
-        </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
-          className={`nav-item ${menu === "menu" ? "active" : ""}`}
-        >
-          <Menu size={18} />
-          <span>Menu</span>
-        </a>
-
-        <a
-          href="#appdownload"
-          onClick={() => setMenu("mobile-app")}
-          className={`nav-item ${menu === "mobile-app" ? "active" : ""}`}
-        >
-          <Smartphone size={18} />
-          <span>Mobile App</span>
-        </a>
-        <Link
-          to="/wishlist"
-          onClick={() => setMenu("wishlist")}
-          className={`nav-item ${menu === "wishlist" ? "active" : ""}`}
-        >
-          <Heart size={18} />
-          <span>Wishlist</span>
-        </Link>
-        <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
-          className={`nav-item ${menu === "contact-us" ? "active" : ""}`}
-        >
-          <Phone size={18} />
-          <span>Contact</span>
-        </a>
-        <a
-          href="#faq"
-          onClick={() => setMenu("faq")}
-          className={`nav-item ${menu === "faq" ? "active" : ""}`}
-        >
-          <HelpCircle size={18} />
-          <span>FAQ</span>
-        </a>
-      </ul>
+         
+      {/* Mobile bottom nav */}
+      <nav className="navbar-menu-mobile">
+        {navMenu}
+      </nav>
     </>
   );
 };

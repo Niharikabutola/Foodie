@@ -1,3 +1,4 @@
+
 :root {
   --navbar-bg: #ffffff;
   --bg-color: #ffffff;
@@ -46,13 +47,7 @@ body {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
-/* as per theme*/
-:root {
-  --navbar-bg: #ffffff; /* light frosted white */
-}
-[data-theme="dark"] {
-  --navbar-bg: #11151d; /* dark frosted black */
-}
+
 
 .navbar-logo {
   display: flex;
@@ -60,7 +55,8 @@ body {
   margin-left: 0;
   margin-right: 15%;
   transition: transform 0.14s cubic-bezier(0.4,0.1,0.6,0.9);
-}
+  
+
 .navbar-logo:hover { transform: scale(1.03); }
 
 .app-icon {
@@ -282,35 +278,4 @@ body {
     color: var(--accent-color);
     transform: translateY(-2px);
   }
-}
-
-/* CSS Variables for theming */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #2d3748;
-  --accent-color: #ff6347;
-  --accent-hover: #e55339;
-  --border-color: #e2e8f0;
-  --hover-bg: #f7fafc;
-  --active-bg: #fed7d7;
-  --theme-toggle-bg: #f7fafc;
-}
-
-[data-theme="dark"] {
-  --bg-color: #1a202c;
-  --text-color: #e2e8f0;
-  --accent-color: #ff6347;
-  --accent-hover: #e55339;
-  --border-color: #2d3748;
-  --hover-bg: #2d3748;
-  --active-bg: #744210;
-  --theme-toggle-bg: #2d3748;
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  padding-top: 90px;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 70px);
-}
+  }
