@@ -48,6 +48,7 @@ const App = () => {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/restaurants" element={<Restaurants />} />
           </Routes>
+
           <ScrollToTopButton /> {/* floating button */}
           <CartSummaryBar />
           <AppDownload />
