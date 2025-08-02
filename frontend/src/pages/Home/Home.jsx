@@ -8,16 +8,9 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 const Home = () => {
   const [category, setCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [showButton, setShowButton] = useState(false);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-  };
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    // Clear search query when category changes
-    setSearchQuery("");
   };
 
   useEffect(() => {
@@ -32,7 +25,7 @@ const Home = () => {
     <div className="home-page">
       <SearchBar onSearch={handleSearch} />
       <Header />
-      <ExploreMenu category={category} setCategory={handleCategoryChange} />
+      <ExploreMenu category={category} setCategory={setCategory} />
       <FoodDisplay category={category} searchQuery={searchQuery} />
     </div>
   );
