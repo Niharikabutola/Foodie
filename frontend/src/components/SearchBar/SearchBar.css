@@ -2,9 +2,10 @@
 .search-bar-container {
   position: relative;
   width: 100%;
-  padding-top: 75px;
   max-width: 600px;
   margin: 0 auto;
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 .search-bar {
@@ -16,7 +17,7 @@
   padding: 4px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin: 20px;
+  margin: 0;
 }
 
 .search-bar:focus-within {
@@ -199,6 +200,7 @@
   .search-bar {
     border-radius: 10px;
     padding: 2px;
+    margin: 0;
   }
   
   .search-input {
