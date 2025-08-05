@@ -13,8 +13,10 @@ import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 import Wishlist from "./pages/wishlist/wishlist";
 import Restaurants from "./pages/Restaurants/Restaurants";
+import RestaurantDetail from "./pages/Restaurants/RestaurantDetail";
 import Chatbot from "./components/Chatbot/Chatbot";
 import FAQ from "./components/FAQ/FAQ";
+import ContactPage from "./pages/Contactpage";
 import { Toaster } from "react-hot-toast";
 import LoadingAnimation from "./components/LoadingAnimation";
 import ScrollToTop from "../utility/ScrollToTop";
@@ -34,6 +36,7 @@ const App = () => {
   }
 
   return (
+
 
    <ThemeContextProvider>
   <>
@@ -62,27 +65,12 @@ const App = () => {
   </>
 </ThemeContextProvider>
 
-        <div className="app">
-          <Navbar setShowLogin={setShowLogin} />
-          <SearchBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/order" element={<PlaceOrder />} />
-            <Route path="/food/:id" element={<FoodDetail />} />
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/restaurants" element={<Restaurants />} />
-          </Routes>
-          <ScrollToTopButton /> {/* floating button */}
-          <CartSummaryBar />
-          <AppDownload />
-          <FAQ />
-          <Footer />
-          <Chatbot /> {/* AI Food Assistant */}
-        </div>
-      </>
-    </ThemeContextProvider>
+
+
   );
 };
+        
+
+
 
 export default App;
