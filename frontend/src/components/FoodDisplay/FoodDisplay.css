@@ -3,7 +3,7 @@
   margin: 50px;
 }
 
-/* Remove margin on mobile view */
+
 @media (max-width: 768px) {
   .food-display {
     margin: 0;
@@ -12,7 +12,7 @@
 
 
 .food-display h2{
-    font-size: max(2vw 24px);
+    font-size: max(2v, 24px);
     font-weight: 600;
      margin: 30px;
 
@@ -25,7 +25,6 @@
     gap: 30px;
     row-gap: 50px;
 }
-
 .no-results {
     grid-column: 1 / -1;
     text-align: center;
@@ -41,3 +40,26 @@
     margin: 0;
     font-weight: 500;
 }
+
+.filter-toggle {
+  margin: 15px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.filter-toggle button {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-left: 23px;
+}
+
+.filter-toggle button.active {
+  background-color: tomato;
+  color: white;
+  border-color: tomato;
+}
+
