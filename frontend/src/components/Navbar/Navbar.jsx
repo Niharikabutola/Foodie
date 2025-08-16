@@ -16,6 +16,7 @@ import {
   Moon,
   HelpCircle,
   Utensils,
+  Star,
 } from "lucide-react";
 
 const Navbar = ({ setShowLogin }) => {
@@ -70,6 +71,14 @@ const Navbar = ({ setShowLogin }) => {
       >
         <Utensils size={18} />
         <span>Restaurant</span>
+      </Link>
+      <Link
+        to="/recommendations"
+        onClick={() => setMenu("recommendations")}
+        className={`nav-item ${menu === "recommendations" ? "active" : ""}`}
+      >
+        <Star size={18} />
+        <span>Top Picks</span>
       </Link>
       <a
         href="#explore-menu"

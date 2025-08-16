@@ -15,6 +15,7 @@ import Wishlist from "./pages/wishlist/wishlist";
 import SharedWishlist from "./pages/wishlist/SharedWishlist";
 import Restaurants from "./pages/Restaurants/Restaurants";
 import RestaurantDetail from "./pages/Restaurants/RestaurantDetail";
+import RestaurantRecommendations from "./components/RestaurantRecommendations/RestaurantRecommendations";
 import Chatbot from "./components/Chatbot/Chatbot";
 import FAQ from "./components/FAQ/FAQ";
 import ContactPage from "./pages/Contactpage";
@@ -51,6 +52,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/recommendations" element={<RestaurantRecommendations />} />
              <Route
             path="/order"
             element={
