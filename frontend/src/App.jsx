@@ -28,6 +28,7 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import StoreContextProvider from "./components/context/StoreContext";
 import ScrollToBottom from "./components/ScrollToBottomButton/ScrollToBottomButton";
 import ReferralProgram from "./components/Referrals/ReferralProgram";
+import AboutUs from "./components/Aboutus/Aboutus";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -93,6 +94,7 @@ const App = () => {
             <Route path="/aboutpage" element={<AboutPage />} />
             <Route path="/referral" element={<ReferralProgram />} />
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
+               <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
 

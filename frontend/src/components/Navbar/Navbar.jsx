@@ -14,9 +14,9 @@ import {
   User,
   Sun,
   Moon,
-  HelpCircle,
   Utensils,
   Star,
+  Info,
 } from "lucide-react";
 
 const Navbar = ({ setShowLogin }) => {
@@ -109,6 +109,17 @@ const Navbar = ({ setShowLogin }) => {
 )}
 
       </Link>
+
+      
+   <Link
+      to="/aboutus"
+      onClick={() => setMenu("aboutus")}
+      className={`nav-item ${menu === "aboutus" ? "active" : ""}`}
+    >
+        <Info size={18} />
+        <span>About Us</span>
+      </Link>
+      
       <Link
         to="/contact"
         onClick={() => setMenu("contact-us")}
