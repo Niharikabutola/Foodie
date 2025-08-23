@@ -17,7 +17,6 @@ import Restaurants from "./pages/Restaurants/Restaurants";
 import RestaurantDetail from "./pages/Restaurants/RestaurantDetail";
 import RestaurantRecommendations from "./components/RestaurantRecommendations/RestaurantRecommendations";
 import Chatbot from "./components/Chatbot/Chatbot";
-import FAQ from "./components/FAQ/FAQ";
 import ContactPage from "./pages/Contactpage";
 import { Toaster } from "react-hot-toast";
 import LoadingAnimation from "./components/LoadingAnimation";
@@ -29,12 +28,14 @@ import StoreContextProvider from "./components/context/StoreContext";
 import ScrollToBottom from "./components/ScrollToBottomButton/ScrollToBottomButton";
 import ReferralProgram from "./components/Referrals/ReferralProgram";
 import AboutUs from "./components/Aboutus/Aboutus";
+import FAQ from "./components/FAQ/FAQ";
+import VoiceSearchButton from "./components/VoiceSearchButton/VoiceSearchButton";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return !!localStorage.getItem("authToken"); 
+    return !!localStorage.getItem("authToken");
   });
 
   useEffect(() => {
@@ -48,18 +49,20 @@ const App = () => {
 
   return (
     <ThemeContextProvider>
-      <StoreContextProvider> {/* ✅ Wrap the app with StoreContextProvider */}
+      <StoreContextProvider>
+        {/* ✅ Wrap the app with StoreContextProvider */}
         <Toaster position="top-right" reverseOrder={false} />
         {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
 
         <div className="app">
           <Navbar setShowLogin={setShowLogin} />
           <ScrollToTop />
-          <ScrollToBottom/>
+          <ScrollToBottom />
 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+
             <Route path="/recommendations" element={<RestaurantRecommendations />} />
              <Route
             path="/order"
@@ -86,6 +89,31 @@ const App = () => {
               )
             }
         />
+            <Route
+              path="/order"
+              element={
+                isLoggedIn ? (
+                  <PlaceOrder />
+                ) : (
+                  <div style={{ padding: "2rem", textAlign: "center" }}>
+                    <h2
+                      style={{
+                        color: "#f97316", // Tailwind's orange-500
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      Please Log In To Proceed
+                    </h2>
+                    <p style={{ color: "#fdba74", fontSize: "1rem" }}>
+                      Your journey continues after login 🔐
+                    </p>
+                  </div>
+                )
+              }
+            />
             <Route path="/food/:id" element={<FoodDetail />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/wishlist/:userId" element={<SharedWishlist />} />
@@ -94,15 +122,20 @@ const App = () => {
             <Route path="/aboutpage" element={<AboutPage />} />
             <Route path="/referral" element={<ReferralProgram />} />
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
-               <Route path="/aboutus" element={<AboutUs/>} />
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/faq" element={<FAQ/>}/>
           </Routes>
 
           <ScrollToTopButton /> {/* floating button */}
           <CartSummaryBar />
+          <VoiceSearchButton />
           <AppDownload />
-          <Footer />
+          
+          {/* ✅ Footer now contains FAQ */}
+          <Footer>
+            <FAQ />
+          </Footer>
+
           <Chatbot /> {/* AI Food Assistant */}
         </div>
       </StoreContextProvider>
